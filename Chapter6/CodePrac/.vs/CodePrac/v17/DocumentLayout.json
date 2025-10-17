@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\surface\\Desktop\\CppPrimerPlusExercises\\Chapter6\\CodePrac\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AE982946-6269-492B-9ACB-AA255CFBB7A2}|CodePrac.vcxproj|C:\\Users\\surface\\Desktop\\CppPrimerPlusExercises\\Chapter6\\CodePrac\\CodePrac.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AE982946-6269-492B-9ACB-AA255CFBB7A2}|CodePrac.vcxproj|solutionrelative:CodePrac.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CodePrac.cpp",
+              "DocumentMoniker": "C:\\Users\\surface\\Desktop\\CppPrimerPlusExercises\\Chapter6\\CodePrac\\CodePrac.cpp",
+              "RelativeDocumentMoniker": "CodePrac.cpp",
+              "ToolTip": "C:\\Users\\surface\\Desktop\\CppPrimerPlusExercises\\Chapter6\\CodePrac\\CodePrac.cpp",
+              "RelativeToolTip": "CodePrac.cpp",
+              "ViewState": "AgIAANMAAAAAAAAAAAAQwNgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-16T07:14:39.155Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
