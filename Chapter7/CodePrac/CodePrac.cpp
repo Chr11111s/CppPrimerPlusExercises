@@ -278,3 +278,9 @@
 //double calculate(double a, double b, double(*func)(double, double)) { //形参是指向其它函数的指针的设计(死记硬背)：指向函数的返回值类型(*func)(指向函数形参类型)
 //	return func(a, b);
 //}
+
+//int main() {
+//    double a = 5.0, b = 3.0;
+//
+//    // 使用 calculate 函数，传递 add 函数指针
+//    double result = calculate(a, b, add);
