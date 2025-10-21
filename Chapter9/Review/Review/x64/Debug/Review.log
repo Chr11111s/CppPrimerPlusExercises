@@ -1,0 +1,61 @@
+﻿  Review.cpp
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(1,1): error C3927: "->": 非函数声明符后不允许尾随返回类型
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(1,3): error C3484: 语法错误: 返回类型前应为“->”
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(1,4): error C3613: “->”后缺少返回类型(假定为“int”)
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(1,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(1,4): error C2146: 语法错误: 缺少“;”(在标识符“下列情况应使用哪种存储方案”的前面)
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(2,3): error C3872: “0x2014”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(3,3): error C3872: “0x2014”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(4,3): error C3872: “0x2014”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(5,3): error C3872: “0x2014”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(8,97): error C2039: "cout": 不是 "std" 的成员
+      C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\predefined C++ types (compiler internal)(357,11):
+      参见“std”的声明
+  
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(8,103): error C3873: “0x3002”: 不允许将此字符作为标识符的第一个字符
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(8,103): error C3872: “0x3001”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(8,103): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(10,1): error C2143: 语法错误: 缺少“;”(在“using”的前面)
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(8,103): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(10,7): error C2065: “编译指令：把整个命名空间的所有名字引入当前作用域，例如”: 未声明的标识符
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(10,7): error C2187: 语法错误: 此处出现意外的“编译指令：把整个命名空间的所有名字引入当前作用域，例如”
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(10,110): error C3873: “0x3002”: 不允许将此字符作为标识符的第一个字符
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(10,110): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(10,110): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(12,1): error C2146: 语法错误: 缺少“;”(在标识符“Q3”的前面)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\sal.h(2361,12): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+  (编译源文件“Review.cpp”)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\sal.h(2361,12): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+  (编译源文件“Review.cpp”)
+  
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(27,1): error C3927: "->": 非函数声明符后不允许尾随返回类型
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(27,3): error C3484: 语法错误: 返回类型前应为“->”
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(27,4): error C3613: “->”后缺少返回类型(假定为“int”)
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(27,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(27,4): error C2146: 语法错误: 缺少“;”(在标识符“重新编写代码，使之使用using声明，而不是using编译指令”的前面)
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(32,5): error C2084: 函数“int main(void)”已有主体
+      C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(15,5):
+      参见“main”的前一个定义
+  
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(44,1): error C3927: "->": 非函数声明符后不允许尾随返回类型
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(44,3): error C3484: 语法错误: 返回类型前应为“->”
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(44,4): error C3613: “->”后缺少返回类型(假定为“int”)
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(44,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(44,4): error C2146: 语法错误: 缺少“;”(在标识符“如何实现：在一个文件中调用average”的前面)
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(44,56): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(45,5): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(45,63): error C2065: “file1”: 未声明的标识符
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(45,74): error C2062: 意外的类型“int” 
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(45,219): error C3873: “0x3002”: 不允许将此字符作为标识符的第一个字符
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(47,63): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(48,1): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(49,185): error C3873: “0x201c”: 不允许将此字符作为标识符的第一个字符
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(49,197): error C3872: “0x201d”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(49,197): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(88,41): error C2872: “y”: 不明确的符号
+      C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(58,5):
+      可能是“int y”
+      C:\Users\surface\Desktop\CppPrimerPlusExercises\Chapter9\Review\Review.cpp(83,6):
+      或  “int `anonymous-namespace'::y”
+  
