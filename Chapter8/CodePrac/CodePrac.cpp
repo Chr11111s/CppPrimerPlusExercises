@@ -72,3 +72,132 @@
 //	}
 //	std::cout << "Bye.";
 //}
+
+//Q4.下面为一个程序框架，存在两个show()函数，且都使用默认参数。尽可能使用const参数。set()使用new分配足够的空间存储指定的字符串，
+//#include <cstring> //strlen()，strcpy()
+//struct stringy {
+//	char* str; //points to a string
+//	int ct; //length of string (not counting '\0')
+//};
+//
+//void set(stringy& beany, const char* testing) {
+//	beany.ct = strlen(testing);
+//	beany.str = new char[beany.ct + 1]; //因为结构体中str定义就是char*，这里我是第一次见
+//	strcpy(beany.str, testing);
+//}
+//
+//void show(stringy& beany, int count = 1 ) { //针对前两个show()
+//	std::cout << beany.str << std::endl;
+//}
+//
+//void show(const char* str, int count = 1) { //针对后两个show()
+//	for (int i = 0; i < count; i++) std::cout << str << std::endl;
+//}
+//
+//int main() {
+//	stringy beany;
+//	char testing[] = "Reality isn't what it used to be.";
+//
+//	set(beany, testing); //first argument is a reference, allocates space to hold copy of testing, sets str member of beany to point to the new block, copies testing to new block, and sets ct member of beany
+//	show(beany); //prints member string once
+//	show(beany, 2); //prints member of string twice
+//	testing[0] = 'D';
+//	testing[1] = 'u';
+//	show(testing); //prints testing string once
+//	show(testing, 3); //prints testing string thrice
+//	show("Done!");
+//	return 0;
+//}
+
+//Q5.编写模板函数max5()，它将一个包含5个T类型元素的数组作为参数，并返回数组中最大的元素(由于长度固定，因此可以在循环中使用硬编码，而不必通过参数来传递)。在程序中使用该函数，将T替换为一个包含5个int值的数组和一个包含5个double值的数组测试函数。
+//template<typename T>
+//T max_one(T arr[5]) {
+//	T maxOne = arr[0];
+//	for (int i = 0; i < 5; i++) {
+//		if (arr[i] > maxOne) maxOne = arr[i];
+//	}
+//	return maxOne;
+//}
+//
+//int main() {
+//	int arr1[5] = { 1,2,3,4,5 };
+//	std::cout << max_one(arr1);
+//	std::cout << std::endl;
+//	double arr2[5] = { 1.1,2.2,3.3,4.4,5.5 };
+//	std::cout << max_one(arr2);
+//}
+
+//Q6.编写模板函数maxn()，它将由一个T类型元素组成的数组和一个表示数组元素数目的整数作为参数，并返回数组中最大的元素。在程序中测试它，该程序使用一个包含6个int元素的数组和一个包含4个double元素的数组来调用该函数。
+//程序还包含一个具体化，它将char指针数组和数组中的指针数量作为参数，并返回最长的字符串的地址。如果有多个这样的字符串则返回其中第一个字符串的地址。使用由5个字符串指针组成的数组来测试该具体化
+//#include <cstring> //strlen()
+//template<typename T>
+//T max_one(T arr[], int count) {
+//	T maxOne = arr[0];
+//	for (int i = 0; i < count; i++) {
+//		if (maxOne < arr[i])maxOne = arr[i];
+//	}
+//	return maxOne;
+//}
+//
+//template<>
+//char* max_one(char* arr[], int count) {
+//	if (count == 0)return nullptr; //若数组为空调用strlen()就会导致程序崩溃，应加入数组为空直接返回空指针保障安全。
+//
+//	int longest = strlen(arr[0]);
+//	for (int i = 0; i < count; i++) {
+//		if (longest < strlen(arr[i])) longest = strlen(arr[i]);
+//	}
+//	for (int i = 0; i < count; i++) {
+//		if (strlen(arr[i]) == longest) {
+//			return arr[i]; //break是多余的，因为return会直接跳出当前函数(连带着循环一起)，也不需要有指针指向arr[i]，因为arr[i]本身就是指针，return arr[i]就是返回其地址
+//
+//		}
+//	}
+//}
+
+//Q7.修改程序使其使用两个名为SumArray()的模板函数来返回数组元素的总和，而不是显示数组的内容。程序应显示thing的总和以及所有debt的总和。
+//template<typename T>
+//T SumArray(T arr[], int n);
+//
+//template<typename T>
+//T SumArray(T* arr[], int n);
+//
+//struct debts {
+//	char name[50];
+//	double amount;
+//};
+//
+//int main() {
+//	using namespace std;
+//	int things[6] = { 13,31,103,301,310,130 };
+//	struct debts mr_E[3] =
+//	{
+//		{"Ima Wolfe", 2400.0},
+//		{"Ura Foxe", 1300.0},
+//		{"Iby Stout", 1800.0}
+//	};
+//	double* pd[3];
+//
+//	for (int i = 0; i < 3; i++) pd[i] = &mr_E[i].amount;
+//	cout << "Listing Mr.E's counts of things:"<< SumArray(things, 6);
+//	cout << "Listing Mr.E's debts:"<<SumArray(pd, 3);
+//	return 0;
+//}
+//
+//template<typename T>
+//T SumArray(T arr[], int n) {
+//	using namespace std;
+//	T total = 0;
+//	cout << "template A\n";
+//	for (int i = 0; i < n; i++) total += arr[i];
+//	return total;
+//}
+//
+//template<typename T>
+//T SumArray(T* arr[], int n) {
+//	using namespace std;
+//	T total = 0;
+//	cout << "template B\n";
+//	for (int i = 0; i < n; i++)total += *arr[i];
+//	return total;
+//}
