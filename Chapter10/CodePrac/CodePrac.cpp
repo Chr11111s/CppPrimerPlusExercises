@@ -162,8 +162,260 @@
 //}
 
 //Q4.考虑下面的结构声明,编写程序从栈中添加/删除customer结构(栈用Stack类声明表示)。每次customer结构被删除时，其payment的值都被加入到总数中，并报告总数。注意：应该可以直接使用Stack类而不做修改；只需修改typedef声明，使Item的类型为customer，而不是unsigned long即可。
-struct customer {
-	char fullname[35];
-	double payment;
-};
+//struct customer {
+//	char fullname[35];
+//	double payment;
+//};
+////stack.h
+//#ifndef STACK_H_
+//#define STACK_H_
+//
+//typedef customer Item;
+//
+//class Stack {
+//private:
+//	enum{MAX=10};
+//	Item items[MAX];
+//	int top;
+//public:
+//	Stack();
+//	bool isempty()const;
+//	bool isfull()const;
+//	bool push(const Item& item);
+//	bool pop(Item& item);
+//};
+//#endif
+//
+////stack.cpp
+//#include "stack.h"
+//Stack::Stack() {
+//	top = 0;
+//}
+//bool Stack::isempty()const {
+//	return top == 0;
+//}
+//bool Stack::isfull()const {
+//	return top == MAX;
+//}
+//bool Stack::push(const Item& item) {
+//	if (top < MAX) {
+//		items[top++] = item;
+//		return true;
+//	}
+//	else return false;
+//}
+//bool Stack::pop(Item & item) {
+//	if (top > 0) {
+//		item = items[--top];
+//		return true;
+//	}
+//	else return false;
+//}
+//
+////main.cpp
+//#include <iostream>
+//using namespace std;
+//
+//int main() {
+//	Stack st;
+//	double total = 0;
+//
+//	while (true) {
+//		customer c;
+//		int code;
+//		cout << "输入指令(1压栈2出栈3退出)：";
+//		cin >> code;
+//		cin.ignore(); //输入数字后记得清空
+//		if (code == 3)break;
+//		else if (code == 1) {
+//			if (st.isfull()) {
+//				cout << "已满，请停止输入";
+//				continue;
+//			}
+//			cout << "输入名字：";
+//			cin.getline(c.fullname, 35);
+//			cout << "输入payment：";
+//			cin >> c.payment;
+//			if (!st.isfull()) st.push(c);
+//		}
+//
+//		else if (code == 2) {
+//			if (st.isempty()) {
+//				cout << "已空，请先输入一个";
+//				continue;
+//			}
+//			st.pop(c);
+//			total += c.payment; //因为栈内元素是private，必须要先pop出来才能对值进行操作
+//
+//			cout << "当前total：" << total << endl;
+//		}
+//		else {
+//			cout << "无效指令，请输入1/2/3";
+//			continue;
+//		}
+//	}
+//}
 
+//Q5.下面是一个类声明，请提供成员函数的定义和测试这个类的程序
+//using namespace std;
+//class Move {
+//private:
+//	double x;
+//	double y;
+//public:
+//	Move(double a = 0, double b = 0) :x(a), y(b) {}; //构造对象时格式：例如Move m(1, 2)即将1，2赋值给m.x和m.y。
+//	void showme()const {
+//		cout << "x: " << x << " " << "y: " << y << endl;
+//	}
+//	Move add(const Move& m)const { //将新的m对象的x/y值加到当前对象的x/y值上，并且创建一个新对象赋上add后的x/y值并返回这个对象
+//		Move new_m;
+//		new_m.x = x + m.x;
+//		new_m.y = y + m.y;
+//		return new_m;
+//	}
+//
+//	void reset(double a = 0, double b = 0) {
+//		x = a;
+//		y = b;
+//	}
+//};
+//
+//int main() {
+//	Move m1;
+//	m1.showme();
+//
+//	Move m2(1,2);
+//	m2.showme();
+//
+//	m1 = m1.add(m2);
+//	m1.showme();
+//
+//	m1.reset();
+//	m1.showme();
+//}
+
+//Q6.Betelgeusean plorg有这些特征——数据：plorg的名称不超过19个字符；plorg有满意指数(CI)，这是一个整数 || 操作：新的plorg将有名称，其CI值为50；plrog的CI可以修改；plorg可以报告其名称和CI;plorg的默认名称为"Plorga"
+//编写Plorg类，包含成员变量及成员函数实现。然后编写程序演示Plorg类所有特性
+//#include <cstring>
+//using namespace std;
+//
+//class Plorg {
+//private:
+//	char name[19];
+//	int CI;
+//public:
+//	Plorg() {
+//		strcpy(name, "Plorga"); //初始化列表？不行，数组放不进去
+//		CI = 50;
+//	}
+//	void change_CI(int new_CI) {
+//		CI = new_CI;
+//	}
+//	void show() {
+//		cout << "name: " << name<<endl;
+//		cout << "CI: " << CI << endl;
+//	}
+//};
+//
+//int main() {
+//	Plorg p;
+//	p.show();
+//
+//	p.change_CI(100);
+//	p.show();
+//}
+
+//Q7.简单列表如下：可储存0个或多个某种类型的列表；可创建空列表；可在列表中添加数据项；可确定列表是否为空；可确定列表是否为满；可访问列表中的每一个数据项，并对它们执行某种操作
+//设计一个List类表示这种抽象类型。设计list.h与list.cpp，并且编写简短程序演示功能。
+
+//list.h
+//#ifndef LIST_H_ //这三行使得头文件可以安全地被多次包含
+//#define LIST_H_ //这三行使得头文件可以安全地被多次包含
+//
+//typedef double Item;
+//
+//class List {
+//private:
+//	static const int MAX = 10; //最大容量
+//	Item arr[MAX]; //数据存储容器
+//	int count; //当前数量
+//public:
+//	List();
+//	bool isempty()const; //修饰函数的const是针对当前成员变量，目的是该函数不可改变当前成员变量
+//	bool isfull()const;
+//	bool add(const Item& item); //本质是一个double值
+//	void visit(void (*pf) (Item&)); //*****函数指针：我（List）里有很多元素，你告诉我一个函数 pf(你可以在主程序中自定义)，我就用这个函数去处理我所有的元素。*****
+//	void show()const;
+//};
+//#endif //这三行使得头文件可以安全地被多次包含
+//
+////list.cpp
+//#include <iostream>
+//#include "list.h"
+//using namespace std;
+//
+//List::List() {
+//	count = 0;
+//}
+//bool List::isempty()const {
+//	return count == 0;
+//}
+//bool List::isfull()const {
+//	return count == MAX;
+//}
+//bool List::add(const Item& item) {
+//	if (count < MAX) {
+//		arr[count++] = item;
+//		return true;
+//	}
+//	else {
+//		return false;
+//	}
+//}
+//void List::visit(void(*pf)(Item&)) {
+//	for (int i = 0; i < count; i++) pf(arr[i]);
+//}
+//void List::show()const {
+//	for (int i = 0; i < count; i++) cout<<arr[i];
+//}
+//
+//
+////main.cpp
+//#include <iostream>
+//#include "list.h"
+//using namespace std;
+//
+//// 示例自定义函数1：打印每个元素
+//void print_item(Item& x) {
+//	cout << x << " ";
+//}
+//
+//// 示例自定义函数2：把每个元素乘2
+//void double_item(Item& x) {
+//	x *= 2;
+//}
+//
+//int main() {
+//	List mylist;
+//
+//	cout << "列表是否为空？ " << (mylist.isempty() ? "是" : "否") << endl;
+//
+//	// 添加元素
+//	for (int i = 1; i <= 5; i++)
+//		mylist.add(i * 10);
+//
+//	mylist.show();
+//
+//	// 对每个元素执行操作：打印
+//	cout << "访问每个元素：";
+//	mylist.visit(print_item);
+//	cout << endl;
+//
+//	// 对每个元素执行操作：乘以2
+//	mylist.visit(double_item);
+//
+//	// 打印修改后的结果
+//	mylist.show();
+//
+//	cout << "列表是否为满？ " << (mylist.isfull() ? "是" : "否") << endl;
+//}
