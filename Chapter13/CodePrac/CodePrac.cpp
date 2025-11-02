@@ -199,4 +199,303 @@ public:
 	}
 };
 
-//Q3.修改baseDMA-lackDMA-hasDMA类层次，让三个类都从一个ABC派生而来，然后使用与程序清单13.10相似的程序对结果进行测试。也即它应使用ABC指针数组，并让用户决定要创建的对象类型。在类定义中添加virtual View()方法以处理数据显示。
+//Q3.修改baseDMA-lackDMA-hasDMA类层次，让三个类都从一个ABC(包含至少一个纯虚函数)派生而来，然后使用与程序清单13.10相似的程序对结果进行测试。也即它应使用ABC指针数组，并让用户决定要创建的对象类型。在类定义中添加virtual View()方法以处理数据显示。
+//dma.h
+//#ifndef DMA_H_
+//#define DMA_H_
+//#include <iostream>
+//using namespace std;
+//
+//class baseDMA {
+//private:
+//	char* label;
+//	int rating;
+//public:
+//	baseDMA(const char* l = "null", int r = 0);
+//	baseDMA(const baseDMA& rs);
+//	virtual ~baseDMA();
+//	baseDMA& operator=(const baseDMA& rs);
+//	friend ostream& operator<<(ostream& os, const baseDMA& rs);
+	
+	//将View()定义为纯虚函数即可(virtual和=0缺一不可，只有virtual只是普通虚函数，不强制派生类实现，只有=0语法错误；纯虚函数要求派生类必须实现View()方法)。有了纯虚函数baseDMA就是一个抽象基类
+	virtual void View() = 0;
+//};
+
+//class lacksDMA : public baseDMA {
+//private:
+//	enum { COL_LEN = 40 };
+//	char color[COL_LEN];
+//public:
+//	lacksDMA(const char* c = "blank", const char* l = "null",int r = 0);
+//	lacksDMA(const char* c, const baseDMA& rs);
+//	friend ostream& operator<<(ostream& os, const lacksDMA& rs);
+	void View()override {
+		cout << "label: " << label << endl;
+		cout << "rating: " << rating << endl;
+		cout << "color: " << color << endl;
+	}
+//};
+
+//class hasDMA :public baseDMA {
+//private:
+//	char* style;
+//public:
+//	hasDMA(const char* s = "none", const char* l = "null", int r = 0);
+//	hasDMA(const char* s, const baseDMA& rs);
+//	hasDMA(const hasDMA& hs);
+//	~hasDMA();
+//	hasDMA& operator=(const hasDMA& rs);
+//	friend ostream& operator<<(ostream& os, const hasDMA& rs);
+	void View()override {
+		cout << "label: " << label << endl;
+		cout << "rating: " << rating << endl;
+		cout << "style: " << style << endl;
+	}
+//};
+//
+//#endif
+//
+////dma.cpp
+//#include "dma.h"
+//#include <iostream>
+//using namespace std;
+//
+//baseDMA::baseDMA(const char* l, int r) {
+//	label = new char[strlen(l) + 1];
+//	strcpy(label, l);
+//	rating = r;
+//}
+//baseDMA::baseDMA(const baseDMA& rs) {
+//	label = new char[strlen(rs.label) + 1];
+//	strcpy(label, rs.label);
+//	rating = rs.rating;
+//}
+//baseDMA::~baseDMA() { delete[] label; }
+//baseDMA& baseDMA::operator=(const baseDMA& rs) {
+//	if (this == &rs)return *this;
+//	delete[] label;
+//	label = new char[strlen(rs.label) + 1];
+//	strcpy(label, rs.label);
+//	rating = rs.rating;
+//	return *this;
+//}
+//ostream& operator<<(ostream& os, const baseDMA& rs) {
+//	os << "Label: " << rs.label << endl;
+//	os << "Rating: " << rs.rating << endl;
+//	return os;
+//}
+//
+//lacksDMA::lacksDMA(const char* c, const char* l, int r) : baseDMA(l,r) {
+//	strncpy(color, c, 39);
+//	color[39] = '\0';
+//}
+//lacksDMA::lacksDMA(const char* c, const baseDMA& rs) :baseDMA(rs) {
+//	strncpy(color, c, COL_LEN - 1);
+//	color[COL_LEN - 1] = '\0';
+//}
+//ostream& operator<<(ostream& os, const lacksDMA& ls) {
+//	os << (const baseDMA&)ls;
+//	os << "Color: " << ls.color << endl;
+//	return os;
+//}
+//
+//hasDMA::hasDMA(const char* s, const char* l, int r) :baseDMA(l, r) {
+//	style = new char[strlen(s) + 1];
+//	strcpy(style, s);
+//}
+//hasDMA::hasDMA(const char* s, const baseDMA& rs) :baseDMA(rs) {
+//	style = new char[strlen(s) + 1];
+//	strcpy(style, s);
+//}
+//hasDMA::hasDMA(const hasDMA& hs) :baseDMA(hs) {
+//	style = new char[strlen(hs.style) + 1];
+//	strcpy(style, hs.style);
+//}
+//hasDMA::~hasDMA() { delete[] style; }
+//hasDMA& hasDMA::operator=(const hasDMA& hs) {
+//	if (this == &hs)return *this;
+//	baseDMA::operator=(hs);
+//	delete[] style;
+//	style = new char[strlen(hs.style) + 1];
+//	strcpy(style, hs.style);
+//	return *this;
+//}
+//ostream& operator<<(ostream& os, const hasDMA& hs) {
+//	os << (const baseDMA&)hs;
+//	os << "Style: " << hs.style << endl;
+//	return os;
+//}
+
+//main.cpp
+#include <iostream>
+#include "dma.h"
+#include <string>
+using namespace std;
+
+int main(){
+	baseDMA* arr[1]; //有*，即arr是指向baseDMA类型对象的指针，加了[size]就是个指针数组了，因为是指针所以用->访问对象
+	int choice;
+	string label;
+	int rating;
+	string color;
+	string style;
+
+	while (true) {
+		cout << "选择创建的对象类型：1.baseDMA  2.lacksDMA  3.hasDMA 4.退出" << endl;
+		cin >> choice;
+		cin.ignore();
+		if (choice == 1) {
+			cout << "此时创建baseDMA对象" << endl;
+			cout << "label: ";
+			getline(cin, label);
+			cout << "rating: ";
+			cin >> rating;
+			arr[0] = new baseDMA(label, rating);
+			arr[0]->View(); //指针需要用->来访问对象
+			delete arr[0]; //delete用于释放new的单个对象，delete[]用于释放new的整个数组，这里指针指向的是堆上的内存，所以通过delete释放掉
+		}
+		else if (choice == 2) {
+			cout << "此时创建lacksDMA对象" << endl;
+			cout << "color: ";
+			getline(cin, color);
+			cout << "label: ";
+			getline(cin, label);
+			cout << "rating: ";
+			cin >> rating;
+			arr[0] = new lacksDMA(color, label, rating);
+			arr[0]->View(); //指针需要用->来访问对象
+			delete arr[0]; //delete用于释放new的单个对象，delete[]用于释放new的整个数组，这里指针指向的是堆上的内存，所以通过delete释放掉
+		}
+		else if (choice == 3) {
+			cout << "此时创建hasDMA对象" << endl;
+			cout << "style: ";
+			getline(cin, style);
+			cout << "label: ";
+			getline(cin, label);
+			cout << "rating: ";
+			cin >> rating;
+			arr[0] = new hasDMA(style, label, rating);
+			arr[0]->View(); //指针需要用->来访问对象
+			delete arr[0]; //delete用于释放new的单个对象，delete[]用于释放new的整个数组，这里指针指向的是堆上的内存，所以通过delete释放掉
+		}
+		else if (choice == 4) { break; }
+		else {cout << "输入非法，请重新输入：";}
+	}
+}
+
+/*
+比方说之前创建结构体对象和结构体数组时，区别使用->和.访问
+StructName* p = new StructName用->，因为通过p访问，而p是指针，指针用->访问。p->Method
+StructName* p = new StructName[size]用.，因为通过p[i]访问，而p[i]是对象，对象用.访问。p[i].Method
+但是最后都是通过delete p来释放内存，因为p是指针。本题中arr[i]是指针，所以是delete arr[i]释放内存。
+*/
+
+//Q4.设置Port类及其派生类VintagePort，完成所有函数定义，并解释①为什么有的函数被重新定义了而有些没有 ②为什么没有将operator=()和operator<<()声明为虚的
+
+//class.h
+#include <iostream>
+using namespace std;
+class Port {
+private:
+	char* brand;
+	char style[20];
+	int bottles;
+public:
+	Port(const char* br = "none", const char* st = "none", int b = 0) {
+		brand = new char[strlen(br) + 1];
+		strcpy(brand, br);
+		strcpy(style, st);
+		bottles = b;
+	}
+	Port(const Port& p) {
+		brand = new char[strlen(p.br) + 1];
+		strcpy(brand, p.br);
+		strcpy(style, p.st);
+		bottles = p.b;
+	}
+	virtual ~Port() { delete[] brand; }
+	Port& operator=(const Port& p) {
+		if (this == &p)return *this;
+		delete[] brand;
+		brand = new char[strlen(p.br) + 1];
+		strcpy(brand, p.br);
+		strcpy(style, p.st);
+		bottles = p.b;
+		return *this;
+	}
+	Port& operator+=(int b) {
+		bottles += b;
+		return *this;
+	}
+	Port& operator-=(int b) {
+		bottles -= b;
+		return *this;
+	}
+	int BottleCount()const { return bottles; }
+	virtual void Show()const {
+		cout << "brand: " << brand << endl;
+		cout << "style: " << style << endl;
+		cout << "bottles: " << bottles << endl;
+	}
+	friend ostream& operator<<(ostream& os, const Port& p);
+};
+
+class VintagePort :public Port {
+private:
+	char* nickname;
+	int year;
+public:
+	VintagePort() : Port("none", "none", 0) {
+		nickname = new char[strlen("none") + 1];
+		strcpy(nickname, "none");
+		year = 0;
+	}
+	VintagePort(const char* br, int b, const char* nn, int y) : Port(br,"none", b) {
+		nickname = new char[strlen(nn) + 1];
+		strcpy(nickname, nn);
+		year = y;
+	}
+	VintagePort(const VintagePort& vp) : Port(vp){
+		nickname = new char[strlen(vp.nickname) + 1];
+		strcpy(nickname, vp.nickname);
+		year = vp.year;
+	}
+	~VintagePort() { delete[] nickname; }
+	VintagePort& operator=(const VintagePort& vp) {
+		if (this == &vp)return *this;
+		Port::operator=(vp);
+		nickname = new char[strlen(vp.nickname) + 1];
+		strcpy(nickname, vp.nickname);
+		year = vp.year;
+		return *this;
+	}
+	void Show()const {
+		Port::Show();
+		cout << "nickname: " << nickname << endl;
+		cout << "year: " << year << endl;
+	}
+	friend ostream& operator<<(ostream& os, const VintagePort& vp);
+};
+
+//class.cpp
+#include "class.h"
+#include <iostream>
+using namespace std;
+
+ostream& operator<<(ostream& os, const Port& p) {
+	os << "brand: " << p.brand << endl;
+	os << "styles: " << p.style << endl;
+	os << "bottles: " << p.bottles << endl;
+	return os;
+}
+ostream& operator<<(ostream& os, const VintagePort& vp) {
+	Port::operator<<(os,vp);
+	os << "nickname: " << vp.nickname << endl;
+	os << "years: " << vp.year << endl;
+	return os;
+}
+/*
+有些函数重新被定义，例如构造函数和析构函数，因为它们处理的是 多态和资源管理。但是operator= 和 operator<< 不需要，它们是 静态绑定 的函数，只做简单操作，不依赖多态。
+
+没有将它们声明为虚函数，因为它们并不需要多态，重写它们会引入不必要的复杂性。
+*/
